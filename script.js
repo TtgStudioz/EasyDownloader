@@ -41,3 +41,11 @@ async function download() {
     }
   }, 1000);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const downloadButton = document.getElementById("downloadBtn");
+  if (downloadButton) {
+    downloadButton.addEventListener("click", download);
+  }
+});
+
