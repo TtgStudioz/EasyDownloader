@@ -1,5 +1,5 @@
 const API = "http://10.0.0.239:8081";
-
+//lol
 async function download() {
   const url = document.getElementById("videoUrl").value;
   const format = document.getElementById("format").value;
@@ -7,17 +7,17 @@ async function download() {
 
   if (!url) return alert("Enter URL");
 
-  // Start download
-  const startRes = await fetch(
-    `${API}/start?url=${encodeURIComponent(url)}&format=${format}&quality=${quality}`
-  );
-
-  const { id } = await startRes.json();
-
   const bar = document.getElementById("progressFill");
   const text = document.getElementById("statusText");
 
-  // Poll progress
+  text.innerText = "Starting download...";
+  bar.style.width = "0%";
+
+  const startRes = await fetch(
+    `${API}/start?url=${encodeURIComponent(url)}&format=${format}&quality=${quality}`
+  );
+  const { id } = await startRes.json();
+
   const interval = setInterval(async () => {
     const res = await fetch(`${API}/progress/${id}`);
     const data = await res.json();
@@ -27,12 +27,19 @@ async function download() {
       text.innerText = `Downloading: ${data.percent}%`;
     }
 
+    if (data.percent == 100 && data.status === "downloading") {
+      text.innerText = "Finalizing download...";
+    }
+
+    if (data.status === "processing") {
+      text.innerText = "Processing video (merging audio/video)...";
+    }
+
     if (data.status === "done") {
       clearInterval(interval);
       text.innerText = "Download ready!";
-
-      // Download file
-      window.location.href = `${API}/download-file/${id}`;
+      const downloadWindow = window.open("", "_blank");
+      downloadWindow.location.href = `${API}/download-file/${id}`;
     }
 
     if (data.status === "error") {
@@ -48,4 +55,3 @@ document.addEventListener("DOMContentLoaded", () => {
     downloadButton.addEventListener("click", download);
   }
 });
-
