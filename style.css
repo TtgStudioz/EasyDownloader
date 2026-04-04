@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #1e1e1e;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #252525;
+    color: white;
+    box-sizing: border-box;
+}
+
+.settings {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    background: #252525;
+    color: white;
+    border: 1px solid #333;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+.hidden { display: none; }
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #333;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: #ff0000;
+    transition: width 0.2s;
+}
+
+#statusText {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    color: #aaa;
+}
