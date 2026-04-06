@@ -1,5 +1,5 @@
-const API = "http://10.0.0.239:8081";
-// const API = "https://marina-corrected-calculations-obituaries.trycloudflare.com";
+// const API = "http://10.0.0.239:8081";
+const API = "https://comp-districts-humanity-simple.trycloudflare.com";
 
 async function download() {
     const url = document.getElementById("videoUrl").value;
